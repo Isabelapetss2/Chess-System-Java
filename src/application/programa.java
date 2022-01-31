@@ -1,18 +1,17 @@
 package application;
 
-import boardgame.Tabuleiro;
+import chess.Partida;
 
 public class programa {
 
 	public static void main(String[] args) {
 		
 		
-		Tabuleiro tabuleiro = new Tabuleiro(8, 5);
+		Partida partida = new Partida();
+		UI.printTabuleiro(partida.getPieces());
 		
 		
-		System.out.println();
 		
-
 	}
 
 }

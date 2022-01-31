@@ -27,8 +27,6 @@ public class Tabuleiro {
 		this.rows = rows;
 	}
 
-
-
 	public int getColumns() {
 		return columns;
 	}
@@ -39,8 +37,18 @@ public class Tabuleiro {
 		this.columns = columns;
 	}
 	
+	public Peça piece(int rows,int columns) {
+		return pieces [rows][columns];
+	}
 	
-	
+	public Peça piece(Posicao position) {
+		return pieces[position.getRow()][position.getColumn()];
+	}
+	public void lugarDaPeça(Peça piece,Posicao position) {
+		pieces[position.getRow()][position.getColumn()] = piece;
+		piece.position = position;
+		
+	}
 	
 	
 
