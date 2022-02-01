@@ -1,7 +1,11 @@
 package application;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 import chess.Colors;
 import chess.PecaDeXadrez;
+import chess.PosicaoXadrez;
 
 // printa a peça da partida no console
 
@@ -27,6 +31,20 @@ public class UI {
 	public static final String ANSI_PURPLE_BACKGROUND = "\u001B[45m";
 	public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
 	public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
+	
+	
+	public static PosicaoXadrez leiaPosicao(Scanner sc) {
+		try {
+		String s = sc.nextLine();
+		char   column = s.charAt(0);
+		int row = Integer.parseInt(s.substring(1));
+		return new PosicaoXadrez(column,row);
+		}
+		catch(RuntimeException e) {
+			throw new InputMismatchException("Error! Posição inválida!");
+		}
+		
+	}
 
 	public static void printBoard(PecaDeXadrez[][] pieces) {
 		for (int i = 0; i < pieces.length; i++) {

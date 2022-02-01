@@ -46,6 +46,19 @@ public class Tabuleiro {
 
 	}
 
+	public Peça removePeca(Posicao position) {
+		if (!positionExists(position)) {
+			throw new BoardException(" Error! Position not on the Board");
+		}
+		if(piece(position)== null) {
+			return null;
+		}
+		Peça aux = piece(position);
+		aux.position = null;
+		pieces[position.getRow()][position.getColumn()] = null;
+		return aux;
+	}
+
 	private boolean positionExists(int row, int column) {
 		return row >= 0 && row < rows && column >= 0 && column < columns;
 	}
@@ -55,10 +68,10 @@ public class Tabuleiro {
 	}
 
 	public boolean thereIsAPiece(Posicao position) {
-//		if (!positionExists(rows, columns)) {
-//			throw new BoardException(" Error! Position not on the Board");
-//		}
-		
+		if (!positionExists(position)) {
+			throw new BoardException(" Error! Position not on the Board");
+		}
+
 		return piece(position) != null;
 	}
 

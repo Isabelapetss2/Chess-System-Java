@@ -1,5 +1,6 @@
 package chess;
 
+import boardgame.Peça;
 import boardgame.Posicao;
 import boardgame.Tabuleiro;
 import chess.pieces.Rainha;
@@ -27,9 +28,33 @@ public class Partida {
 		}
 		return peca;
 	}
+	
+	public PecaDeXadrez performChessMove(PosicaoXadrez sourcePosition, PosicaoXadrez targetPosition) {
+		Posicao source = sourcePosition.toPosition();
+		Posicao target = targetPosition.toPosition();
+		validarPosicao(source);
+		Peça capturedPiece = movimentoRealizado(source,target);
+		return(PecaDeXadrez)capturedPiece;
+	}
+	
+
+
+	
+	private Peça movimentoRealizado(Posicao source,Posicao target) {
+		Peça p = tabuleiro.removePeca(source);
+		Peça capturedPiece = tabuleiro.removePeca(target);
+		tabuleiro.lugarDaPeça(p,target);
+		return capturedPiece;
+	}
 
 	private void placeNewPiece(char column, int row, PecaDeXadrez piece) {
 		tabuleiro.lugarDaPeça(piece, new PosicaoXadrez(column, row).toPosition());
+	}
+	
+	private void validarPosicao(Posicao position) {
+		if(!tabuleiro.thereIsAPiece(position)) {
+			throw new ChessException(" não há peças nessa posição!");
+		}
 	}
 
 	private void setupInicial() {
