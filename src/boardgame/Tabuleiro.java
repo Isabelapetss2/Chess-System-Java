@@ -55,9 +55,9 @@ public class Tabuleiro {
 	}
 
 	public boolean thereIsAPiece(Posicao position) {
-		if (!positionExists(rows, columns)) {
-			throw new BoardException(" Error! Position not on the Board");
-		}
+//		if (!positionExists(rows, columns)) {
+//			throw new BoardException(" Error! Position not on the Board");
+//		}
 		
 		return piece(position) != null;
 	}
