@@ -2,6 +2,7 @@ package chess;
 
 import boardgame.Posicao;
 import boardgame.Tabuleiro;
+import chess.pieces.Rainha;
 import chess.pieces.Torre;
 
 public class Partida {
@@ -26,7 +27,9 @@ public class Partida {
 		return peca;
 	}
 	private void setupInicial() {
-		tabuleiro.lugarDaPeça(new Torre(tabuleiro,Colors.BRANCO),new Posicao(3,4));
+		tabuleiro.lugarDaPeça(new Torre(tabuleiro,Colors.BRANCO),new Posicao(2,4));
+		tabuleiro.lugarDaPeça(new Rainha(tabuleiro,Colors.PRETO),new Posicao(2,4));
+
 	}
 	
 }
